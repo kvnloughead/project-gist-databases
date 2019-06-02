@@ -2,7 +2,6 @@ from .models import Gist
 import sqlite3
 import datetime
 
-db = sqlite3.connect('tests/populated_gists_database.db')
 
 def search_gists(db_connection, **kwargs):
     """Struggled to make this work by inserting parameters into sqlite, so I did the other thing.
