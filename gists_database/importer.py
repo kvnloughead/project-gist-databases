@@ -1,8 +1,6 @@
 from requests.exceptions import HTTPError
 import requests
 import sqlite3
-from pathlib import Path
-
 
 COLUMNS = ['github_id', 'html_url', 'git_pull_url', 'git_push_url', 'commits_url', 'forks_url',
               'public', 'created_at', 'updated_at', 'comments', 'comments_url']
@@ -21,9 +19,8 @@ def import_gists_to_database(db, username, commit=True):
 
     # create table from schema.sql
     cursor = db.cursor()
-    schema = Path('schema.sql')
-    with open(schema) as fp:
-        cursor.executescript(schema.read_text())
+    with open('schema.sql') as fp:
+        cursor.executescript(fp.read())
     
     # insert data into table
     query = """INSERT INTO gists (
@@ -36,5 +33,5 @@ def import_gists_to_database(db, username, commit=True):
         params = {column:value for column, value in zip(COLUMNS, values)}
         cursor.execute(query, params)
 
-    return cursor
-
+    return cursorg
+g
