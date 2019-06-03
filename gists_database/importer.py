@@ -33,5 +33,4 @@ def import_gists_to_database(db, username, commit=True):
         params = {column:value for column, value in zip(COLUMNS, values)}
         cursor.execute(query, params)
 
-    return cursorg
-g
+    return cursor
